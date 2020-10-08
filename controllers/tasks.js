@@ -21,4 +21,5 @@ exports.getTasks = async (req, res) => {
 exports.checkTask = async (req, res) => {
   const task = await Task.findById(req.params.taskId)
   await User.findByIdAndUpdate(req.user.id, {$push: {doneTasks: task}})
+  res.status(200).json({ message: "Task checked"})
 }
