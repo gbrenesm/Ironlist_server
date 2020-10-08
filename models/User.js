@@ -12,6 +12,10 @@ const userSchema = new Schema(
         password: {
             type: String
         },
+        createdTasks: [{
+            type: Schema.Types.ObjectId,
+            ref: "Task"
+        }],
         doneTasks: [{
             type: Schema.Types.ObjectId,
             ref: "Task"
