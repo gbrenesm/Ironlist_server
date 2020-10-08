@@ -13,7 +13,7 @@ exports.createTask = async (req, res) => {
 
 //// R
 exports.getTasks = async (req, res) => {
-  const tasks = await Task.find()
+  const tasks = await Task.find().populate("completedBy")
   res.status(200).json({ tasks })
 }
 
@@ -24,8 +24,7 @@ exports.getUserTasks = async (req, res) => {
 
 //// U
 exports.checkTask = async (req, res) => {
-  const task = await Task.findById(req.params.taskId)
-  await User.findByIdAndUpdate(req.user.id, {$push: {doneTasks: task}})
+  const task = await Task.findByIdAndUpdate(req.params.taskId, {completed: true, $push: {completedBy: req.user.id}})
   res.status(200).json({ message: "Task checked"})
 }
 

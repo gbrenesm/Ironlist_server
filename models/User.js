@@ -16,10 +16,6 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "Task"
         }],
-        doneTasks: [{
-            type: Schema.Types.ObjectId,
-            ref: "Task"
-        }]
     },
     {
         timestamps: true
