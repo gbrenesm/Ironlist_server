@@ -8,3 +8,5 @@ const taskSchema = new Schema(
     timestamps: true
   }
 )
+
+module.exports = model ("Task", taskSchema)
